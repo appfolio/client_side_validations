@@ -73,7 +73,7 @@
     if ($(this[0]).is('form')) {
       return validateForm($(this[0]), validators);
     } else {
-      return validateElement($(this[0]), validators[this[0].name]);
+      return validateElement($(this[0]), validatorsFor(this[0].name, validators));
     }
   }
 
@@ -93,8 +93,8 @@
     form.trigger('form:validate:after');
     return valid;
   }
-
-  var validateElement = function(element, validators) {
+  
+  var validateElement = function (element, validators) {
     element.trigger('element:validate:before');
 
     if (element.data('changed') !== false) {
@@ -116,8 +116,13 @@
 
     element.trigger('element:validate:after');
     return element.data('valid') === false ? false : true;
-  }
+  };
 
+  var validatorsFor = function(name, validators) {
+    name = name.replace(/_attributes\]\[\d+\]/g,"_attributes][]")
+    return validators[name]
+  };
+  
   // Main hook
   // If new forms are dynamically introduced into the DOM the .validate() method
   // must be invoked on that form
