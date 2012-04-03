@@ -242,8 +242,11 @@ var clientSideValidations = {
           return message;
         } else {
           if (options['in']) {
-            for (var i = 0; i < options['in'].length; i++) {
-              if (options['in'][i] == element.val()) {
+            for (i = 0; i < options['in'].length; i++) {
+              if (options['in'][i] == element.val()
+                  || (options['in'][i] === true && ('true' === element.val()))
+                  || (options['in'][i] === false && ('false' === element.val()))
+                  ) {
                 return;
               }
             }
