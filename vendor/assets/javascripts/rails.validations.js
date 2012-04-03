@@ -253,7 +253,10 @@ var ClientSideValidations = {
         } else {
           if (options['in']) {
             for (i = 0; i < options['in'].length; i = i + 1) {
-              if (options['in'][i] == element.val()) {
+              if (options['in'][i] == element.val()
+                  || (options['in'][i] === true && ('true' === element.val()))
+                  || (options['in'][i] === false && ('false' === element.val()))
+                  ) {
                 return;
               }
             }
