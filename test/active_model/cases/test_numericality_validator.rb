@@ -12,6 +12,11 @@ class ActiveModel::NumericalityValidatorTest < ClientSideValidations::ActiveMode
     assert_equal expected_hash, NumericalityValidator.new(:attributes => [:age], :message => "bad number").client_side_hash(@person, :age)
   end
 
+  def test_numericality_client_side_hash_with_allow_blank
+    expected_hash = { :messages => { :numericality => "bad number" }, :allow_blank => true }
+    assert_equal expected_hash, NumericalityValidator.new(:attributes => [:age], :message => "bad number", :allow_blank => true).client_side_hash(@person, :age)
+  end
+
   def test_numericality_client_side_hash_with_options
     expected_hash = {
       :messages => {

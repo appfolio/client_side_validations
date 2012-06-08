@@ -1,5 +1,19 @@
 module('Numericality options');
 
+test('when value is blank, and blank is allowed', function() {
+    var element = $('<input type="text" />');
+    var options = { messages: { numericality: "failed validation" }, allow_blank: true };
+    element.val('');
+    equal(ClientSideValidations.validators.local.numericality(element, options), undefined);
+});
+
+test('when value is blank, and blank is not allowed', function() {
+    var element = $('<input type="text" />');
+    var options = { messages: { numericality: "failed validation" } };
+    element.val('');
+    equal(ClientSideValidations.validators.local.numericality(element, options), "failed validation");
+});
+
 test('when value is a number', function() {
   var element = $('<input type="text" />');
   var options = { message: "failed validation" };
