@@ -1,3 +1,3 @@
 module ClientSideValidations
-  VERSION = '3.1.4.af1'
+  VERSION = '3.1.4.af2'
 end
