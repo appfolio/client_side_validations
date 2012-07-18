@@ -3,12 +3,12 @@ $:.push File.expand_path("../lib", __FILE__)
 require "client_side_validations/version"
 
 Gem::Specification.new do |s|
-  s.name        = "client_side_validations"
+  s.name        = "af-client_side_validations"
   s.version     = ClientSideValidations::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Brian Cardarella"]
-  s.email       = ["bcardarella@gmail.com"]
-  s.homepage    = "https://github.com/bcardarella/client_side_validations"
+  s.authors     = ["Paul Kmiec"]
+  s.email       = ["paul.kmiec@appfolio.com"]
+  s.homepage    = "https://github.com/appfolio/client_side_validations"
   s.summary     = %q{Client Side Validations}
   s.description = %q{Client Side Validations}
 
