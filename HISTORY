@@ -1,3 +1,13 @@
+= 3.1.4.af3
+  Fixed fields_for assuming options was args.last which is not true when options are not possed in
+
+= 3.1.4.af2
+  Support for allow_blank for numericality
+
+= 3.1.4.af1
+  Added supported for nested attributes
+  Better support for true / false
+
 = 3.1.4
   Fixed numericality validator
   Backport fix for issue #176
