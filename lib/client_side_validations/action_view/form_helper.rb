@@ -45,7 +45,7 @@ module ClientSideValidations::ActionView::Helpers
       output = super
       
       if @validators
-        options = args.last || {}
+        options = args.extract_options!
         if validators = options[:validators]
           @validators.merge!(validators) 
         end
