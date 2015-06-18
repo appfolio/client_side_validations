@@ -10,7 +10,8 @@ module('Validate Element', {
         'user[agree]':{"acceptance": [{"message": "must be accepted"}]},
         'user[email]':{"uniqueness":[{"message": "must be unique"}],"presence":[{"message": "must be present"}]},
         'user[info_attributes][eye_color]':{"presence":[{"message": "must be present"}]},
-        'user[phone_numbers_attributes][][number]':{"presence":[{"message": "must be present"}]}
+        'user[phone_numbers_attributes][][number]':{"presence":[{"message": "must be present"}]},
+        'customized_filed':{"length":[{"messages":{"minimum":"is too short (minimum is 4 characters)"},"minimum":4}]}
       }
     }
 
@@ -81,10 +82,26 @@ module('Validate Element', {
           name: 'user[info_attributes][eye_color]',
           id: 'user_info_attributes_eye_color',
           type: 'text'
+        }))
+        .append($('<label for="customized_filed">Customized Filed</label>'))
+        .append($('<input />', {
+            name: 'customized_filed',
+            id: 'customized_filed',
+            type: 'text'
         }));
 
     $('form#new_user').validate();
   }
+});
+
+test('Validate when focusouting on customized_filed', function() {
+  var form = $('form#new_user'), input = form.find('input#customized_filed');
+  var label = $('label[for="customized_filed"]');
+
+  input.val('1');
+  input.trigger('focusout');
+  ok(input.parent().hasClass('field_with_errors'));
+  ok(label.parent().hasClass('field_with_errors'));
 });
 
 test('Validate when focusouting', function() {
